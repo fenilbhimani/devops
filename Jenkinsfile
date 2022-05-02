@@ -29,13 +29,9 @@ pipeline
         }
     }
 
-    post
-    {
-
-    	always
-    	{
-    		emailext body: 'Summary', subject: 'Pipeline Status', to: 'pamitap1234@gmail.com'
-    	}
-
+    post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
     }
 }
